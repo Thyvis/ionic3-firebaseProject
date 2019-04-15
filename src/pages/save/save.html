@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Course Registration</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="course.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Price</ion-label>
+      <ion-input type="text" [(ngModel)]="course.price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="course.description"></ion-input>
+    </ion-item>
+
+    <button ion-button full (click)="save(course)">Submit</button>
+
+  </ion-list>
+</ion-content>

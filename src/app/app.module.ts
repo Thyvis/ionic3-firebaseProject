@@ -11,7 +11,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //Config Firebase
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
+//Page Modules
+import { SavePageModule } from '../pages/save/save.module';
+
+//Pages
+import { SavePage } from '../pages/save/save';
 
 @NgModule({
   declarations: [
@@ -22,18 +30,25 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(environment.firebase)
+    //Firebase Modules
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    //Page Modules
+    SavePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    //Other Pages
+    SavePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider
   ]
 })
 export class AppModule {}
