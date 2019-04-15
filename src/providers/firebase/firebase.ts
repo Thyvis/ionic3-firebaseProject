@@ -1,6 +1,7 @@
 import { AngularFireList } from '@angular/fire/database';
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -25,8 +26,22 @@ export class FirebaseProvider {
 
   }
 
+  //Retornar toda a lista no caminho do banco de dados, sempre que um valor for alterado.
   getAll() {
-    return this.dbRef.valueChanges();
+    //console.log('this.dbRef.valueChanges()', this.dbRef.valueChanges());
+
+    //Retorno com o método valueChanges
+    //return this.dbRef.valueChanges();
+
+    //Retorno com o método snapshotChanges() para ser tratado onde será chamado
+    //return this.dbRef.snapshotChanges();
+
+    //Aqui podemos mapear o objeto para transformar em uma forma mais simplificada onde será chamado usando o snapshotChanges()
+    return this.dbRef.snapshotChanges()
+                     .pipe(map(data => {
+                       //Com a 'data' os dados recebidos para cada linha, vamos transformar, descontruindo cada chave para cada valor
+                       return data.map(d => ({ key: d.payload.key, ...d.payload.val() }))
+                     }));
   }
 
   //Salvar no banco de dados
