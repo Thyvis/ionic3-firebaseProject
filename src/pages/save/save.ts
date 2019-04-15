@@ -4,6 +4,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //Providers
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 
+//Models
+import { Course } from '../../models/course.model';
+
 @IonicPage()
 @Component({
   selector: 'page-save',
@@ -11,18 +14,19 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 })
 export class SavePage {
 
-  course = {
+  /* course = {
     'title': '',
     'price': '',
     'description': ''
-  };
+  }; */
+
+  //Aqui refatoramos o código acima para que seja utlizado um modelo de objeto para um course
+  public course: Course;
 
   constructor(
     public dbService: FirebaseProvider,
     public navCtrl: NavController,
     public navParams: NavParams) {
-
-      //Criar referência para o caminho a ser salvo no banco de dados
 
   }
 
