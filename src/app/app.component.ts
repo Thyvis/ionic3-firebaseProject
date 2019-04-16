@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //Pages
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+//import { EditPage } from '../pages/edit/edit';
 import { SavePage } from '../pages/save/save';
 
 @Component({
@@ -25,6 +26,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
+      //Removi pois o edit agora aceita parâmetros para ser aberto, senão ia quebrar a aplicação
+      //{ title: 'Edit', component: EditPage },
       { title: 'Save', component: SavePage }
     ];
 

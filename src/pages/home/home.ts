@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
 //Providers
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 
 //Pages
 import { SavePage } from '../save/save';
-import { Observable } from 'rxjs';
 
 //Models
 import { Course } from '../../models/course.model';
+import { EditPage } from '../edit/edit';
 
 //Firebase
 //import { AngularFireAction, DatabaseSnapshot } from '@angular/fire/database';
@@ -40,7 +41,7 @@ export class HomePage {
     description: string;
   }[]>; */
 
-  //Simplificando o tipo dde courses acima
+  //Simplificando o tipo de courses acima
   protected courses: Observable<Course[]>;
 
   constructor(
@@ -77,8 +78,13 @@ export class HomePage {
     this.navCtrl.push(SavePage);
   }
 
-  goToSingle(key) {
-    alert(key);
+  goToSingle(course) {
+    //alert(course);
+    //console.log('course', course);
+
+    this.navCtrl.push(EditPage, {
+      'course': course
+    });
   }
 
 }

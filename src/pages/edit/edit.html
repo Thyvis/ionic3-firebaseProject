@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Course</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="course.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Price</ion-label>
+      <ion-input type="text" [(ngModel)]="course.price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="course.description"></ion-input>
+    </ion-item>
+
+    <button ion-button full (click)="update(course)">Update</button>
+    <button ion-button full color="danger" (click)="remove(course)">Remove</button>
+
+  </ion-list>
+</ion-content>

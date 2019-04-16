@@ -16,10 +16,15 @@ import { environment } from '../environments/environment';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
 //Page Modules
+import { EditPageModule } from '../pages/edit/edit.module';
 import { SavePageModule } from '../pages/save/save.module';
 
-//Pages
+//Other Pages
+import { EditPage } from '../pages/edit/edit';
 import { SavePage } from '../pages/save/save';
+
+//Other Providers
+import { ToastProvider } from '../providers/toast/toast';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { SavePage } from '../pages/save/save';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     //Page Modules
+    EditPageModule,
     SavePageModule
   ],
   bootstrap: [IonicApp],
@@ -42,13 +48,15 @@ import { SavePage } from '../pages/save/save';
     HomePage,
     ListPage,
     //Other Pages
+    EditPage,
     SavePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
+    FirebaseProvider,
+    ToastProvider
   ]
 })
 export class AppModule {}

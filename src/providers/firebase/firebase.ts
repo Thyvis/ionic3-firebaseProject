@@ -45,10 +45,18 @@ export class FirebaseProvider {
   }
 
   //Salvar no banco de dados
-  save(course: any) {
+  save(course: Course) {
     //Através do caminho para o banco de dados, iremos salvar o course e exibir um log
-    this.dbRef.push(course)
-              .then(r => console.log(r));
+    return this.dbRef.push(course);
+  }
+
+  //Passar mais um parâmetro para poder obter a key
+  update(course: Course): Promise<void> {
+    return this.dbRef.update(course.key, course);
+  }
+
+  remove(course: Course): Promise<void> {
+    return this.dbRef.remove(course.key);
   }
 
 }
